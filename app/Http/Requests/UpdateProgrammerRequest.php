@@ -11,7 +11,7 @@ class UpdateProgrammerRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,11 @@ class UpdateProgrammerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "user_id" => "sometimes|exists:users,id",
+            "specialty" => "sometimes|string",
+            "total_score" => "sometimes|numeric|nullable",
+            "github_username" => "sometimes|string|nullable",
+            "behance_url" => "sometimes|string|nullable",
         ];
     }
 }

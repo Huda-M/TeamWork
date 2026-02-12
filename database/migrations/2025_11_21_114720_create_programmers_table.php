@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('programmers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('specialty');
             $table->integer('total_score');
             $table->string('github_username');
+            $table->string('behance_url')->nullable();
             $table->timestamps();
         });
     }

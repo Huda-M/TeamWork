@@ -17,6 +17,7 @@ class Programmer extends Model
         'specialty',
         'total_score',
         'github_username',
+        'behance_url',
     ];
     public function teamMessages():HasMany{
         return $this->hasMany(TeamMessage::class);
@@ -28,22 +29,16 @@ class Programmer extends Model
         return $this->hasMany(Task::class);
     }
     public function programmerSkills():HasMany{
-        return $this->hasMany(ProgrammerSkill::class);
+        return $this->hasMany(ProgrammersSkills::class);
     }
     public function programmerLevel():HasOne{
         return $this->hasOne(ProgrammerLevel::class);
     }
-    public function programmerBadges():HasMany{
-        return $this->hasMany(ProgrammerBadge::class);
-    }
     public function programmerActivities():HasMany{
         return $this->hasMany(ProgrammerActivity::class);
     }
-    public function user():BelongsTo{
-        return $this->belongsTo(User::class);
-    }
-    public function codeAnalyses():HasMany{
-        return $this->hasMany(CodeAnalysis::class);
+    public function user():HasMany{
+        return $this->HasMany(User::class);
     }
     public function sentinvitations():HasMany{
         return $this->hasMany(ProjectInvitation::class,'invited_by');

@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('country');
             $table->string('phone');
             $table->string('img_url')->nullable();
-            $table->string('behance_url')->nullable();
             $table->text('bio')->nullable();
             $table->enum('gender',['male','female']);
             $table->enum('role',['admin','company','programmer']);

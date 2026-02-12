@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -21,17 +22,16 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'user_name',
         'email',
         'password',
-        'user_name',
-        'country',
         'phone',
-        'avatar_url',
-        'behance_url',
-        'bio',
         'gender',
         'role',
+        'bio',
+        'country',
         'date_of_birth',
+        'img_url',
     ];
     public function userAuth():HasOne{
         return $this->hasOne(UserAuth::class);
@@ -39,8 +39,8 @@ class User extends Authenticatable
     public function projects():HasMany{
         return $this->hasMany(Project::class);
     }
-    public function programmer():HasOne{
-        return $this->hasOne(Programmer::class);
+    public function programmer():belongsTo{
+        return $this->belongsTo(Programmer::class);
     }
     public function company():HasOne{
         return $this->hasOne(Company::class);

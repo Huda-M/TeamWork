@@ -22,7 +22,11 @@ class StoreProgrammerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "user_id" => "required|exists:users,id",
+            "specialty" => "required|string",
+            "total_score" => "required|numeric",
+            "github_username" => "required|string",
+            "behance_url" => "sometimes|string|nullable",
         ];
     }
 }
